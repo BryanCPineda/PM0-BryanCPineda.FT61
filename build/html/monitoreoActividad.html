@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/H-icon.ico">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title> Asistente de seguridad </title>
+</head>
+<body>
+  <header> 
+    <img src="../assets/img/HEN-Logo.png" alt="Henry"/> 
+    <nav>
+      <ul>
+        <li><a href="../../01.HTML&CSS/index.html"> Home </a></li>
+        <li><a href="./generarContrasena.html"> Generar Contraseña </a></li>
+        <li><a href="./cajaFuerte.html"> Caja Fuerte </a></li>
+        <li><a href="./monitoreoActividad.html"> Monitoreo de Actividad </a></li>
+        <li><a href="./gestionUsuarios.html"> Gestion de Usuarios </a></li>
+      </ul>
+    </nav>
+  </header>
+    <main>
+      <section>
+            <h1> Asistente De Seguridad </h1>
+            <h3 id="subMoniActividad"> SISTEMA DE MONITOREO DE ACTIVIDAD SOSPECHOSA </h3>
+            <article id="monitoreoActividad">
+              <div>
+                <label> Descripcion </label>
+                <input type="text" id="descripcion">
+                <label class="margin-left25px"> Nivel de riesgo  </label>
+                <input type="text" id="nivelRiesgo" >
+                <button id="agregar" class="margin-left25px"> AGREGAR ACTIVIDAD </button>
+              </div>
+              <br>
+              <div>
+                <label> Eliminar una actividad sospechosa </label>
+                <input type="text" placeholder="Indice de la actividad..." id="indice" class="margin-left10px">
+                <button id="eliminar" class="margin-left25px"> ELIMINAR ACTIVIDAD </button>
+              </div>
+              <br>
+              <div>
+                <label> Filtrar actividades por nivel de riesgo </label>
+                <input type="text" placeholder="Nivel de riesgo...." id="nivel" class="margin-left10px">
+                <button id="filtrar" class="margin-left25px"> MOSTRAR ACTVIDADES </button>
+              </div>
+              <button id="generar"> GENERAR REPORTE </button>
+            </article>
+            <h3 id="reporteGenerado"> REPORTE GENERADO </h3>
+            <article id="mostrar"></article>
+          </section>
+    </main>
+</body>
+<script src="../public/bundle.js"></script>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "henry_fe-ct-ft-m0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pi-rym/fe-ct-ft-m0.git"
+  },
+  "author": "Henry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pi-rym/fe-ct-ft-m0/issues"
+  },
+  "homepage": "https://github.com/pi-rym/fe-ct-ft-m0#readme",
+  "description": "",
+  "devDependencies": {
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/H-icon.ico">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title> Asistente de seguridad </title>
+</head>
+<body>
+    <header> 
+      <img src="../assets/img/HEN-Logo.png" alt="Henry"/> 
+      <nav>
+        <ul>
+          <li><a href="../../01.HTML&CSS/index.html"> Home </a></li>
+          <li><a href="./generarContrasena.html"> Generar Contraseña </a></li>
+          <li><a href="./cajaFuerte.html"> Caja Fuerte </a></li>
+          <li><a href="./monitoreoActividad.html"> Monitoreo de Actividad </a></li>
+          <li><a href="./gestionUsuarios.html"> Gestion de Usuarios </a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section >
+          <h1> Asistente De Seguridad </h1>
+            <h3 id="subGenContraseñas"> GENERADOR DE CONTRASEÑAS PARA USUARIOS </h3>
+            <article id="generarContrasena">
+              <div class="separador4">
+                <div class="contenedorGenContrasena">
+                  <label> Cantidad de caracteres deseados </label>
+                  <input type="number" id="longitud">
+                </div>
+                <br>
+                <div class="contenedorGenContrasena">
+                  <label> ¿ incluir caracteres especiales ?</label>
+                  <input type="checkbox" id="especiales">
+                </div>
+                <br>
+                <div class="contenedorGenContrasena">
+                  <label> ¿ incluir caracteres numeros ?</label>
+                  <input type="checkbox" id="numeros">
+                </div>
+                <br>
+                <div class="contenedorGenContrasena">
+                  <label> ¿ incluir caracteres mayusculas ?</label>
+                  <input type="checkbox" id="mayusculas">
+                </div>
+                <br>
+                <button id="generar"> Generar Contraseña </button>
+                
+              </div>
+            </article>
+
+            <article id="contenedorContrasenaGenerada">
+                <h3 id="contrasenaGenerada"> 
+                  <p id="contrasena"> </p></h3>
+            </article>
+        </section>
+    </main>
+</body>
+<script src="../public/bundle.js"></script>
+</html>
