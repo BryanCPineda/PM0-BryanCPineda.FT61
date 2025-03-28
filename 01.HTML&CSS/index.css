@@ -1,0 +1,147 @@
+header{
+  height: 89px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #F1F1F1;
+}
+
+header img{
+  margin-top: 36px;
+  margin-left: 65px;
+  margin-bottom: 26px;
+}
+
+header nav{
+  width: 888px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  margin-right: 69px;
+}
+
+
+header nav ul{
+  width: 888px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+header nav ul li a{
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  text-decoration: none;
+  color:  #222222;
+  padding: 4px 16px 5px 16px;
+  
+}
+
+header nav ul li a:hover{
+  color: #FFFFFF;
+  background-color: #222222;
+  border-radius: 9px;
+}
+
+main section{
+  width: 1166px;
+  height: 590px;
+  margin: 101px auto 0px auto;
+
+}
+
+.contenedor{
+  display: flex;
+}
+
+.contenedorHenrySAS{
+  width: 608px;
+  height: 406px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contenedorHenrySAS div{
+  width: 578px;
+  height: 218px;
+  gap: 0px;
+  opacity: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.henrySAS{
+    font-family: 'Satoshi', sans-serif;
+    font-size: 90px;
+    font-weight: 900;
+    color: #222222;
+    letter-spacing: -0.01em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin: 10px;
+    text-align: left;
+
+}
+
+.securitySas{
+  width: 608px;
+  height: 117px;
+  gap: 0px;
+  border-radius: 418px ;
+  background: #FFFF00;
+  opacity: 0px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 17px;
+}
+
+#seguridadPersonalizada{
+  width: 286px;
+  border-radius: 23px;
+  background-color: #F1F1F1;
+  font-family: 'Poppins', serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 15px 17px 15px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedorHenrySAS p{
+  font-family: 'Satoshi', sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0.005em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #676767;
+  margin: 31px 0px 0px 7px;
+}
+
+#candado{
+  width: 501.55px;
+  height: 590px;
+  border-radius: 20px;
+  margin-left: 56.45px;
+  user-select: none;
+}
+
+.selectNone{
+  user-select: none;
+}
+
+
