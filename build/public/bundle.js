@@ -5,9 +5,52 @@
 /*!***********************************************!*\
   !*** ../02. JS Bases/generadorContrasenas.js ***!
   \***********************************************/
-/***/ (() => {
+/***/ ((module) => {
 
-throw new Error("Module parse failed: Unexpected token (18:6)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n|   var caracteresDisponibles = null;\n| \n>   if () {\n|       \n|   }");
+function checkLongitud(longitud) {
+  /* TU CODIGO */
+  if(!longitud) return 'debe ingresar la longitud'
+  if(typeof longitud !== "string") return "La longitud recibida no es válida"
+  if(longitud < 3) return "La longitud debe ser mayor o igual a 3"
+  if(longitud > 10) return "La longitud debe ser menor o igual a 10"
+  return longitud
+
+}
+
+function generarContrasena(longitud, incluirEspeciales, incluirNumeros, incluirMayusculas ) {
+  /* TU CODIGO */
+  var letras = "abcdefghijklmnopqrstuvwxyz";
+
+  var numeros = '1234567890';
+
+  var especiales = '!@#$%^&*()_+=';
+
+  var letrasMayusculas = letras.toUpperCase()
+
+  var caracteresDisponibles = letras; 
+
+  if (incluirEspeciales) caracteresDisponibles = caracteresDisponibles + especiales
+  if (incluirNumeros) caracteresDisponibles = caracteresDisponibles + numeros
+  if (incluirMayusculas) caracteresDisponibles = caracteresDisponibles + letrasMayusculas
+  
+  var contrasena = '';
+
+  for(var i=0; i < longitud; i++){
+    var numeroAleatorio = Math.random() * caracteresDisponibles.length
+    var numeroEntero = Math.round(numeroAleatorio)
+    var caracter = caracteresDisponibles.charAt(numeroEntero)
+    contrasena = contrasena + caracter
+  }
+
+  return "Contraseña generada: " + contrasena;
+}
+
+// <------- NO TOCAR -------->
+module.exports = {
+  checkLongitud,
+  generarContrasena,
+};
+
 
 /***/ }),
 
@@ -19,12 +62,32 @@ throw new Error("Module parse failed: Unexpected token (18:6)\nYou may need an a
 
 function cajaFuerte(codigoSecreto, cantidadIntentos){
   /* TU CODIGO */
-  
+  if(codigoSecreto.length !== 4) return "El codigo debe tener exactamente 4 digitos"
+  for(var i=0; i < codigoSecreto.length; i++){
+      if( isNaN(codigoSecreto[i])  ) return "El codigo secreto solo puede estar conformado por numeros"
+  }
+  var hayRepetidos = validarNumerosRepetidos(codigoSecreto)
+  if(hayRepetidos) return "el codigo no puede tener numeros repetidos"
+
+  if(cantidadIntentos <= 0 || cantidadIntentos >= 6) return "Solo se permite una cantidad de intentos mayor a 0 y menor a 6"
+  return codigoSecreto.toString() + cantidadIntentos.toString()
 }
 
 function validarNumerosRepetidos(codigo){
   /* TU CODIGO */
-  
+
+  // for (var i = 0; i < codigo.length - 1; i++) {
+  //     for (var j = i+1; j < codigo.length; j++) {
+  //         if(codigo[i] === codigo[j]) return true
+  //     }
+  // }
+
+  // return false
+
+  var nuevoSet = new Set(codigo)
+  if(codigo.length !== nuevoSet.size) return true
+  return false
+
 }
 
 // <------- Contador de intentos -----> no modificar
@@ -32,8 +95,34 @@ var contadorIntentos = 1
 
 function desbloquearCajaFuerte(codigoSecreto, cantidadIntentos, codigoDesbloqueo){
   /* TU CODIGO */
-  
+
+  if(codigoDesbloqueo.length !== 4) return "El codigo debe tener exactamente 4 digitos"
+
+  for(var i=0; i < codigoDesbloqueo.length; i++){
+      if( isNaN(codigoDesbloqueo[i])  ) return "El codigo de desbloqueo solo puede estar conformado por numeros"
+  }
+
+  var hayRepetidos = validarNumerosRepetidos(codigoDesbloqueo)
+  if(hayRepetidos) return "el codigo no puede tener numeros repetidos" 
+
+  if(codigoSecreto === codigoDesbloqueo) return "Acceso concedido despues de : " + contadorIntentos + "intentos"
+
+  switch( true ){
+      case codigoDesbloqueo % 2 === 0:
+        console.log("el codigo es divisible x 2")
+        break
+      case codigoDesbloqueo > codigoSecreto:
+        console.log("Código incorrecto demasiado alto");
+        break
+      default:
+        console.log("codigo incorrecto")
+        break
+  }
+
+  contadorIntentos++
+  if(contadorIntentos > cantidadIntentos) return "Acceso denegado. Se agotaron los intentos"
 }
+
 
 // <------- NO TOCAR -------->
 module.exports = {
@@ -41,6 +130,10 @@ module.exports = {
   desbloquearCajaFuerte,
   validarNumerosRepetidos
 }
+
+
+
+
 
 /***/ }),
 
@@ -51,27 +144,61 @@ module.exports = {
 /***/ ((module) => {
 
 // <------- Arreglo de actividades sospechozas -----> modificar el valor de ser necesario
-var actividadesSospechozas = null
+var actividadesSospechozas = []
 
 function agregarActividad(descripcion, nivelRiesgo){
     /* TU CODIGO */
     
+    if(!descripcion || !nivelRiesgo) return "Descripcion o nivel de riesgo no valido"
+    
+    if(nivelRiesgo !== "bajo" && nivelRiesgo !== "medio" && nivelRiesgo !== "alto") return "Nivel de riesgo no valido, el nivel debe ser: bajo, medio o alto"
+    
+    actividadesSospechozas.push(   "Descripcion: " + descripcion + ", Riesgo - " + nivelRiesgo     )
+    
+    return `Actividad: ${descripcion} con Nivel de riesgo: ${nivelRiesgo} fue agregada con exito`
 }
 
 function eliminarActividad(indice){
     /* TU CODIGO */
     
+    if(isNaN(indice)) return "El indice no es valido, debe ser un numero"
+
+    if(indice < 0 || indice >= actividadesSospechozas.length) return "El indice no es valido, se encuentra fuera del rango"
+    actividadesSospechozas.splice(indice, 1)
+    return "Actividad eliminada con exito"
+
 }
 
 function filtrarActividadesPorRiesgo(nivelRiesgo){
     /* TU CODIGO */
     
+
+    if(!nivelRiesgo) return "Nivel de riesgo no valido" 
+
+    if(nivelRiesgo !== "bajo" && nivelRiesgo !== "medio" && nivelRiesgo !== "alto") return "Nivel de riesgo no valido, el nivel debe ser: bajo, medio o alto"
+
+    var nuevoArray = actividadesSospechozas.filter( function(ele){
+            if(ele.includes(nivelRiesgo)) return ele
+    })
+
+    if(nuevoArray.length === 0) return "No hay actividades con este nivel de riesgo"
+
+    return nuevoArray
+
+
 }
 
 function generarReporteDeActividades(){
     /* TU CODIGO */
     
+    var nuevoArray = actividadesSospechozas.map( function(elemento, indice){
+          return `Id: ${indice} ${elemento}`    
+    })
+    if(nuevoArray.length === 0) return "No hay actividades para mostrar"
+    return nuevoArray
+
 }
+
 
 // <------- NO TOCAR -------->
 module.exports = {
@@ -100,24 +227,65 @@ const { perfiles } = __webpack_require__(/*! ../build/js/perfiles.js */ "./js/pe
 var asistente = {
     verPerfiles: function(opcion){
         /* TU CODIGO */
-      
+      // todo, nombre, codigo, nivel, antiguedad
+        if(opcion === "todo") return perfiles
+
+        if(opcion === "nombre"){
+          var nuevoArray =  perfiles.map( function(perfil){
+                      return perfil.usuario
+            })
+          return nuevoArray
+        }
+
+        if(opcion === "codigo") return perfiles.map( perfil => perfil.codigo  )
+        if(opcion === "nivel") return perfiles.map( perfil => perfil.nivel_de_autorizacion  )
+        if(opcion === "antiguedad") return perfiles.map( perfil => perfil.antiguedad  )
     },
     
     verPerfilesPorAntiguedad: function(){
         /* TU CODIGO */
         
+        var nuevoArray = [...perfiles]
+
+        // for (let i = 0; i < perfiles.length; i++) {
+        //       nuevoArray.push( perfiles[i])
+        // }
+
+        nuevoArray.sort( function(a, b){
+              return b.antiguedad - a.antiguedad
+        })
+        
+        return nuevoArray
+
     },
 
     verAdministradores: function(){
         /* TU CODIGO */
+
+        return perfiles.filter( perfil => perfil.nivel_de_autorizacion === "admin")
+
+        // perfiles.filter( function(elemento){
+        //       if(elemento.nivel_de_autorizacion === "admin") return elemento
+        // })
 
     },
 
     modificarAcceso: function(usuario, codigo){
         /* TU CODIGO */
         
+        var usuarioEncontrado = perfiles.find( perfil => perfil.usuario === usuario )
+
+        if(!usuarioEncontrado) return "usuario no encontrado"
+
+        if(codigo.length !== 4 || isNaN(codigo)) return "codigo de acceso invalido, debe contener solo 4 numeros"
+
+        usuarioEncontrado.codigo = codigo
+
+        return "codigo de acceso modificado" 
     }
 }
+
+
 
 // <----- NO TOCAR ------->
 module.exports = {
